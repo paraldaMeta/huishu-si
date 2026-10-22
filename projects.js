@@ -12,6 +12,14 @@ window.CATEGORIES = {
 
 window.PROJECTS = [
   {
+    title: "XV 塔罗 · 3D 牌桌",
+    en: "XV TAROT",
+    desc: "滚动镜头，环绕魔术师走进 3D 牌桌：78 张神话塔罗、13 种牌阵；另有 40 张雷诺曼牌桌，抽五张线读。",
+    url: "https://xvtaro-demo.pages.dev/",
+    shot: "shots/xvtaro.webp",
+    cat: "mystic",
+  },
+  {
     title: "沙之书",
     en: "The Book of Sand",
     desc: "一本会回答的书：手写、说话或打字提问，以地占的 128 组符给出象征性的回应。",
