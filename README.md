@@ -15,8 +15,8 @@
   desc: "打开就转的在线转经筒与念珠。",  // 一句话介绍
   url: "https://orison.love/",         // 点击后打开的网站
   shot: "shots/cyber-prayer-wheel.webp", // 预览图，放在 shots/ 下，建议 960×600
-  cat: "mystic",                       // 分类：mystic / life / tools
-  lock: "需登录",                      // 可省：需登录 / 受邀 / 内部
+  cat: "mystic",                       // 分类：mystic / life / learn / tools
+  lock: "需登录",                      // 可省：需登录 / 需密码 等小标签
 },
 ```
 

@@ -1,12 +1,13 @@
 // 灰叔SI · 项目数据
 // 新增项目：复制一段 { ... }，改好字段即可。卡片按这里的顺序排列。
-//   cat   分类：mystic 玄学·东方 / life 美业·生活 / tools 工具·平台
+//   cat   分类：mystic 玄学·东方 / life 美业·生活 / learn 学习·游戏 / tools 工具·平台
 //   shot  预览图，放在 shots/ 目录（建议 960×600 的 webp）
 //   lock  可选：需登录 / 受邀 / 内部 —— 会显示成卡片上的小标签
 
 window.CATEGORIES = {
   mystic: "玄学 · 东方",
   life: "美业 · 生活",
+  learn: "学习 · 游戏",
   tools: "工具 · 平台",
 };
 
@@ -41,6 +42,23 @@ window.PROJECTS = [
     desc: "可以游逛的三维纪念园：上香、献花、留下照片与信件，还有家族祠堂与族谱。",
     url: "https://jueming-cemetery.pages.dev/",
     shot: "shots/jueming-cemetery.webp",
+    cat: "mystic",
+  },
+  {
+    title: "灰门地占",
+    en: "Geomancy",
+    desc: "西洋与阿拉伯地占术随机起盘，一键生成盾盘与宫位盘，附元素统计与卦象释义。",
+    url: "https://geomantia.pages.dev/",
+    shot: "shots/geomantia.webp",
+    cat: "mystic",
+    lock: "需密码",
+  },
+  {
+    title: "果蠅神諭",
+    en: "Fly Oracle",
+    desc: "问果蝇一句话：用 Janelia 公开的 16.5 万神经元连接组重放它的选择，看这一问流经了哪些神经元。",
+    url: "https://fly-oracle.pages.dev/",
+    shot: "shots/fly-oracle.webp",
     cat: "mystic",
   },
   {
@@ -132,6 +150,31 @@ window.PROJECTS = [
     cat: "life",
   },
   {
+    title: "OscarFlix",
+    en: "影视聚合",
+    desc: "私人影视聚合站，把多个片源集中到一处搜索和观看。",
+    url: "https://oscarflix.pages.dev/",
+    shot: "shots/oscarflix.webp",
+    cat: "life",
+    lock: "需登录",
+  },
+  {
+    title: "数字积木乐园",
+    en: "Numberblocks",
+    desc: "和数字积木一起玩数学：从认识数字到乘除、分数、几何，覆盖幼儿园到小学五年级，答对攒贴纸。",
+    url: "https://numberblocks.ok.kimi.link/",
+    shot: "shots/numberblocks.webp",
+    cat: "learn",
+  },
+  {
+    title: "宝可梦汉字学堂",
+    en: "Pokémon Hanzi",
+    desc: "用全部 1025 只宝可梦的名字认 955 个汉字，附图鉴、汉字卡片和宝可梦对战。",
+    url: "https://pockemon.ok.kimi.link/",
+    shot: "shots/pockemon.webp",
+    cat: "learn",
+  },
+  {
     title: "CoTalk",
     en: "在线讲课",
     desc: "在线讲课平台：课件、白板与录制，从第一行代码起就为跨境可用而设计。",
@@ -153,7 +196,7 @@ window.PROJECTS = [
     desc: "英文逐词精读与跟读，可调语速，边听边看。",
     url: "https://paraldameta.github.io/magic-readalong/",
     shot: "shots/magic-readalong.webp",
-    cat: "tools",
+    cat: "learn",
   },
   {
     title: "小道消息",
