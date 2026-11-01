@@ -3,6 +3,7 @@
 //   cat   分类：mystic 玄学·东方 / life 美业·生活 / learn 学习·游戏 / tools 工具·平台
 //   shot  预览图，放在 shots/ 目录（建议 960×600 的 webp）
 //   lock  可选：需登录 / 受邀 / 内部 —— 会显示成卡片上的小标签
+//   status 可选：开源 / 交互原型 / 本地工具；recent 标记本次新收录的项目
 
 window.CATEGORIES = {
   mystic: "玄学 · 东方",
@@ -12,6 +13,67 @@ window.CATEGORIES = {
 };
 
 window.PROJECTS = [
+  {
+    title: "妍图",
+    en: "YANTU",
+    desc: "美业门店作图的交互原型：一句话配齐海报、朋友圈方图与文案，另有整店装修、AI 晒单和营销日历。",
+    url: "https://yantu-demo.cotalk.workers.dev/",
+    shot: "shots/yantu.webp",
+    cat: "life",
+    status: "交互原型",
+    recent: true,
+  },
+  {
+    title: "Cloud Duet",
+    en: "主动式 AI 工作助手",
+    desc: "每日简报、后台任务与应用连接，支持多种中英文模型；发邮件或提交表单前先确认。开源，可自行部署。",
+    url: "https://github.com/paraldaMeta/cloud-duet",
+    shot: "shots/cloud-duet.webp",
+    cat: "tools",
+    status: "开源 · 自部署",
+    recent: true,
+  },
+  {
+    title: "Racso",
+    en: "灰叔 AI 工具箱",
+    desc: "按场景查技能、MCP 与工作流，配套演示稿和现场案例；也可通过 Racso MCP 直接给 Agent 找做法。",
+    url: "https://racso-5ob.pages.dev/",
+    shot: "shots/racso.webp",
+    cat: "tools",
+    lock: "需密码",
+    recent: true,
+  },
+  {
+    title: "AI 娘开机动画",
+    en: "AI Musume Boot",
+    desc: "给 macOS 的 Claude、Codex、Kimi、WorkBuddy 与 Cursor 配上五位 AI 娘：全屏动画播完，淡入已打开的应用。",
+    url: "https://github.com/paraldaMeta/ai-musume-boot",
+    shot: "shots/ai-musume-boot.webp",
+    shotFit: "contain",
+    cat: "tools",
+    status: "开源 · macOS",
+    recent: true,
+  },
+  {
+    title: "Mirage Engine",
+    en: "纯代码 3D 世界引擎",
+    desc: "用 three.js 代码搭建庭院、花园与雪屋，提供 Agent 技能、自动试玩和单文件打包。仍在早期开发中。",
+    url: "https://github.com/paraldaMeta/mirage-engine",
+    shot: "shots/mirage-engine.webp",
+    cat: "tools",
+    status: "开源 · 早期版本",
+    recent: true,
+  },
+  {
+    title: "获客松",
+    en: "Leadathon",
+    desc: "按地区与行业找企业线索，补全联系信息、过滤、评分，再起草当地语言的开发信。草稿只存不发，本地运行。",
+    cat: "tools",
+    status: "本地工具",
+    cover: "LEADATHON",
+    coverNote: "地区 × 行业 → 企业线索 → 开发信草稿",
+    recent: true,
+  },
   {
     title: "XV 塔罗 · 3D 牌桌",
     en: "XV TAROT",

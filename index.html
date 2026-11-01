@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>灰叔SI · 产品库</title>
-<meta name="description" content="灰叔SI 的产品库：转经筒、三维墓园、会回答的书、口红试色、色彩诊断、在线讲课……点开卡片，直接进入网站。">
+<meta name="description" content="灰叔SI 的产品与项目库：AI 工作助手、纯代码 3D 世界、美业作图、转经筒、三维墓园、口红试色……浏览网站、开源项目与本地工具。">
 <meta name="theme-color" content="#ECEAE5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="灰叔SI · 产品库">
-<meta property="og:description" content="灰叔SI 的产品库，点开卡片直接进入网站。">
+<meta property="og:description" content="灰叔SI 的产品与项目库，收录网站、开源项目与本地工具。">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
   :root {
@@ -157,6 +157,7 @@
     text-decoration: none;
     transition: transform .25s cubic-bezier(.2, .7, .2, 1), box-shadow .25s, border-color .25s;
   }
+  .card[hidden] { display: none; }
   .shot {
     position: relative;
     aspect-ratio: 16 / 10;
@@ -169,8 +170,15 @@
     object-fit: cover; object-position: top center;
     transition: transform .5s cubic-bezier(.2, .7, .2, 1);
   }
+  .shot--contain img { object-fit: contain; background: #101113; }
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    height: 100%; padding: 28px; color: #E9EEE5; background: #233B32;
+  }
+  .cover strong { font-family: var(--mono); font-size: clamp(22px, 3vw, 34px); letter-spacing: -.05em; }
+  .cover span { margin-top: 16px; font-size: 13px; line-height: 1.8; }
   .body { display: flex; flex-direction: column; flex: 1; padding: 18px 20px 18px; }
-  .meta { display: flex; align-items: center; gap: 8px; min-height: 22px; font-size: 12px; color: var(--faint); letter-spacing: .06em; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-height: 22px; font-size: 12px; color: var(--faint); letter-spacing: .06em; }
   .badge {
     padding: 1px 8px; border-radius: 999px;
     border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
@@ -197,9 +205,9 @@
     transition: background-color .2s, border-color .2s, color .2s;
   }
   @media (hover: hover) {
-    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--faint); }
-    .card:hover .shot img { transform: scale(1.035); }
-    .card:hover .go { background: var(--accent); border-color: var(--accent); color: #fff; }
+    a.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--faint); }
+    a.card:hover .shot img { transform: scale(1.035); }
+    a.card:hover .go { background: var(--accent); border-color: var(--accent); color: #fff; }
   }
 
   footer { padding: 40px 0 56px; color: var(--faint); font-size: 13px; }
@@ -229,7 +237,7 @@
 
   <header class="wrap masthead">
     <h1 class="wordmark">灰叔<span class="si">SI</span></h1>
-    <p class="lede">灰叔的产品库。转经筒与三维墓园、会回答的书，口红试色、色彩诊断，还有在线讲课与每日早报。点开卡片，直接进入网站。</p>
+    <p class="lede">灰叔的产品与项目库。AI 工作助手、纯代码 3D 世界、美业作图，还有转经筒与会回答的书。点开卡片访问网站或开源仓库，本地工具另有标注。</p>
     <dl class="stats" id="stats"></dl>
   </header>
 
@@ -244,7 +252,7 @@
   <footer>
     <div class="wrap">
       <span>© <span id="year">2026</span> 灰叔SI</span>
-      <span>预览图截于 2026 年 10 月 · <a href="https://github.com/paraldaMeta" target="_blank" rel="noopener">github.com/paraldaMeta</a></span>
+      <span>更新于 <time datetime="2026-11-02">2026 年 11 月 2 日</time> · <a href="https://github.com/paraldaMeta" target="_blank" rel="noopener">github.com/paraldaMeta</a></span>
     </div>
   </footer>
 
@@ -268,7 +276,7 @@
 
   // 数字
   var stats = document.getElementById("stats");
-  [[projects.length, "个上线产品"], [catKeys.length, "个方向"]]
+  [[projects.length, "个产品与项目"], [catKeys.length, "个方向"]]
     .forEach(function (s) {
       var d = el("div");
       d.appendChild(el("dt", null, s[1]));
@@ -278,13 +286,15 @@
 
   // 卡片
   function card(p) {
-    var a = el("a", "card");
-    a.href = p.url;
-    a.target = "_blank";
-    a.rel = "noopener";
-    a.setAttribute("aria-label", p.title + (p.en ? " " + p.en : "") + "，在新窗口打开");
+    var a = el(p.url ? "a" : "article", "card");
+    if (p.url) {
+      a.href = p.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.setAttribute("aria-label", p.title + (p.en ? " " + p.en : "") + "，在新窗口打开");
+    }
 
-    var shot = el("div", "shot");
+    var shot = el("div", "shot" + (p.shotFit === "contain" ? " shot--contain" : ""));
     if (p.shot) {
       var img = new Image(960, 600);
       img.src = p.shot;
@@ -292,6 +302,11 @@
       img.loading = "lazy";
       img.decoding = "async";
       shot.appendChild(img);
+    } else if (p.cover) {
+      var cover = el("div", "cover");
+      cover.appendChild(el("strong", null, p.cover));
+      cover.appendChild(el("span", null, p.coverNote));
+      shot.appendChild(cover);
     }
     a.appendChild(shot);
 
@@ -299,6 +314,7 @@
     var meta = el("div", "meta");
     meta.appendChild(el("span", null, cats[p.cat] || ""));
     if (p.lock) meta.appendChild(el("span", "badge", p.lock));
+    if (p.status) meta.appendChild(el("span", "badge", p.status));
     body.appendChild(meta);
 
     var h = el("h3", null, p.title);
@@ -307,10 +323,12 @@
     body.appendChild(el("p", null, p.desc));
 
     var foot = el("div", "foot");
-    foot.appendChild(el("span", "domain", host(p.url)));
-    var go = el("span", "go", "↗");
-    go.setAttribute("aria-hidden", "true");
-    foot.appendChild(go);
+    foot.appendChild(el("span", "domain", p.url ? host(p.url) : "本地运行 · 暂无公开入口"));
+    if (p.url) {
+      var go = el("span", "go", "↗");
+      go.setAttribute("aria-hidden", "true");
+      foot.appendChild(go);
+    }
     body.appendChild(foot);
 
     a.appendChild(body);
@@ -330,10 +348,14 @@
     head.appendChild(el("span", "count", list.length + " 个"));
     sec.appendChild(head);
     var grid = el("div", "grid");
-    list.forEach(function (p) { grid.appendChild(card(p)); });
+    var items = list.map(function (p) {
+      var node = card(p);
+      grid.appendChild(node);
+      return { project: p, node: node };
+    });
     sec.appendChild(grid);
     main.appendChild(sec);
-    sections[k] = sec;
+    sections[k] = { node: sec, count: head.querySelector(".count"), items: items };
   });
 
   // 筛选
@@ -348,6 +370,8 @@
     buttons[key] = b;
   }
   chip("all", "全部", projects.length);
+  var recentCount = projects.filter(function (p) { return p.recent; }).length;
+  if (recentCount) chip("recent", "最近新增", recentCount);
   catKeys.forEach(function (k) {
     if (sections[k]) chip(k, cats[k], projects.filter(function (p) { return p.cat === k; }).length);
   });
@@ -355,7 +379,17 @@
   function select(key, fromClick) {
     if (!buttons[key]) key = "all";
     Object.keys(buttons).forEach(function (k) { buttons[k].setAttribute("aria-pressed", String(k === key)); });
-    Object.keys(sections).forEach(function (k) { sections[k].hidden = key !== "all" && k !== key; });
+    Object.keys(sections).forEach(function (k) {
+      var section = sections[k];
+      var shown = 0;
+      section.items.forEach(function (item) {
+        var visible = key !== "recent" || item.project.recent;
+        item.node.hidden = !visible;
+        if (visible) shown++;
+      });
+      section.count.textContent = shown + " 个";
+      section.node.hidden = !shown || (key !== "all" && key !== "recent" && k !== key);
+    });
     if (fromClick) {
       history.replaceState(null, "", key === "all" ? location.pathname : "#" + key);
       var bar = document.getElementById("filters");
