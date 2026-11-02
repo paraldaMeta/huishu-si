@@ -14,6 +14,16 @@ window.CATEGORIES = {
 
 window.PROJECTS = [
   {
+    title: "尼兹瓦 · 黄金时刻",
+    en: "Nizwa Golden Hour",
+    desc: "在浏览器里漫游阿曼尼兹瓦古城，走进黄金时刻的城墙、街巷与棕榈园。首次打开会由代码现场生成三维场景。",
+    url: "https://nizwa-golden-hour.pages.dev/",
+    shot: "shots/nizwa-golden-hour.webp",
+    cat: "learn",
+    status: "3D 漫游",
+    recent: true,
+  },
+  {
     title: "妍图",
     en: "YANTU",
     desc: "美业门店作图的交互原型：一句话配齐海报、朋友圈方图与文案，另有整店装修、AI 晒单和营销日历。",
