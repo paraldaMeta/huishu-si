@@ -77,11 +77,10 @@ window.PROJECTS = [
   {
     title: "获客松",
     en: "Leadathon",
-    desc: "按地区与行业找企业线索，补全联系信息、过滤、评分，再起草当地语言的开发信。草稿只存不发，本地运行。",
+    desc: "按城市和行业找商家，读官网、打分，并用当地语言起草开发信。草稿只保存在页面上，不会自动发送。",
+    url: "https://leadathon.cotalk.workers.dev/",
+    shot: "shots/leadathon.webp",
     cat: "tools",
-    status: "本地工具",
-    cover: "LEADATHON",
-    coverNote: "地区 × 行业 → 企业线索 → 开发信草稿",
     recent: true,
   },
   {
