@@ -81,6 +81,7 @@ window.PROJECTS = [
     url: "https://leadathon.cotalk.workers.dev/",
     shot: "shots/leadathon.webp",
     cat: "tools",
+    lock: "需密码",
     recent: true,
   },
   {
