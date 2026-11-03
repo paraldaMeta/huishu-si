@@ -228,7 +228,7 @@
     *, *::before, *::after { transition: none !important; }
   }
 </style>
-<link rel="stylesheet" href="racso/books.css"><link rel="stylesheet" href="racso/button.css"><link rel="stylesheet" href="gallery.css"></head>
+<link rel="stylesheet" href="racso/books.css"><link rel="stylesheet" href="racso/button.css"><link rel="stylesheet" href="gallery.css?v=2"></head>
 <body>
   <div class="wrap topbar">
     <a class="brand" href="./"><span class="seal" aria-hidden="true">灰</span>灰叔SI</a>
@@ -268,6 +268,7 @@
   </nav>
 
   <main class="wrap" id="sections">
+    <div class="archive-signal"><canvas aria-hidden="true"></canvas><div><small>HUISHU SI　 /　 LIVE INDEX</small><strong id="signal-title">作品索引</strong></div><span id="signal-count"></span></div>
     <noscript><p>这个页面需要开启 JavaScript 才能显示项目卡片。</p></noscript>
   </main>
 
@@ -435,6 +436,14 @@
     }
   }
   select(location.hash.slice(1));
+  window.addEventListener("hashchange", function () {
+    var key = location.hash.slice(1);
+    if (buttons[key] || !key) {
+      select(key || "all");
+      document.dispatchEvent(new Event("gallery-filter"));
+      if (key) document.getElementById("filters").scrollIntoView();
+    }
+  });
 
   // 吸顶时加分隔线
   var bar = document.getElementById("filters");
@@ -447,5 +456,5 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
 </script>
-<script type="module" src="gallery.js"></script></body>
+<script type="module" src="gallery.js?v=2"></script></body>
 </html>

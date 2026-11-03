@@ -85,3 +85,35 @@ for(const frame of document.querySelectorAll('.card-frame')) {
 const mark = document.querySelector('.endmark');
 mark.style.backgroundImage = editions.map(([name])=>window.PROJECTS.find(p=>p.title===name)?.shot).filter(Boolean).map(s=>'url("'+s+'")').join(',');
 if(location.hash === '#recent' || location.hash === '#all') document.querySelector('#filters').scrollIntoView();
+
+import { constellation } from './racso/constellation.js';
+
+const signal = document.querySelector('.archive-signal');
+const signalTitle = document.querySelector('#signal-title');
+const signalCount = document.querySelector('#signal-count');
+const chips = document.querySelector('#chips');
+const ease = 'cubic-bezier(.16,1,.3,1)';
+
+function updateSignal() {
+  const selected = chips.querySelector('[aria-pressed="true"]');
+  signalTitle.textContent = selected.firstChild.textContent;
+  signalCount.textContent = selected.querySelector('.n').textContent.padStart(2, '0');
+  if (!reduced.matches) {
+    signalTitle.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0)'}], {duration:480,easing:ease});
+    signalCount.animate([{transform:'translateY(12px)',opacity:.25},{transform:'none',opacity:1}], {duration:400,easing:ease});
+  }
+}
+updateSignal();
+chips.addEventListener('click', updateSignal);
+document.addEventListener('gallery-filter', updateSignal);
+constellation(signal, signal.querySelector('canvas'), reduced);
+
+const reveal = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    const node = entry.target;
+    reveal.unobserve(node);
+    node.classList.add('in-view');
+  }
+}, {threshold:.09});
+document.querySelectorAll('.section-head,.card-frame,.scene,.endmark,.book-card').forEach(node => reveal.observe(node));
