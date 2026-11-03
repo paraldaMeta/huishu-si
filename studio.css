@@ -75,3 +75,11 @@
 .table-prop:is(:hover,:focus-visible) span {background:#523b22}
 #studio.in-action .table-prop {pointer-events:none}
 #studio.in-action .table-prop span {opacity:0}
+
+/* Fit the print inside the four painted edges of the wooden easel. */
+.easel-print {
+  position:absolute;left:7%;top:21.8%;width:16.6%;height:21.2%;
+  object-fit:cover;object-position:66% center;pointer-events:none;
+  clip-path:polygon(13% 0,92% 3%,100% 100%,0 98%);
+  filter:sepia(.24) brightness(.86);
+}
