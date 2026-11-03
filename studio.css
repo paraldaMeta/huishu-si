@@ -50,8 +50,8 @@
 .film-strip::before,.film-strip::after {content:"";display:block;height:4px;background:repeating-linear-gradient(90deg,#d6b88e 0 6px,transparent 6px 13px)}
 .film-strip img {display:block;width:100%;aspect-ratio:2.2;object-fit:cover;border:2px solid #100e0d}
 .film-strip b {display:block;font:8px/1.6 monospace;letter-spacing:.12em}
-.armillary {left:79.7%;top:20.9%;width:12%;height:20.5%;overflow:visible;fill:none;stroke:url(#brass);stroke-width:3.8}
-.orbit-wheel {transform-box:view-box;transform-origin:center;animation:brass-turn 17s linear infinite}
+.armillary {left:79.7%;top:20.9%;width:12%;height:20.5%;overflow:hidden;fill:none;stroke:url(#brass);stroke-width:3.8}
+.orbit-wheel {transform-box:fill-box;transform-origin:center;animation:brass-turn 17s linear infinite}
 .orbit-wheel.second {animation-duration:24s;animation-delay:-7s;stroke-width:2.8}
 @keyframes brass-turn {from{transform:rotateY(20deg)}to{transform:rotateY(380deg)}}
 @property --pull {syntax:'<percentage>';inherits:true;initial-value:0%}
