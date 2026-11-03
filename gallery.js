@@ -1,22 +1,4 @@
-import { createTypographyVortexRenderer } from './racso/vortex.js';
-
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-const orbit = document.querySelector('#orbit');
-let stopOrbit;
-function syncMotion() {
-  stopOrbit?.();
-  stopOrbit = reduced.matches ? null : createTypographyVortexRenderer(orbit, orbit.firstElementChild, () => ({
-    phrase: 'HUISHU SI / INTERACTIVE ARCHIVE / ', mode: matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-    speed: .65, ringGrowth: 1.24, opacity: .84, dissolveRadius: .85, particleAmount: .8, suctionDuration: 840
-  }));
-}
-syncMotion();
-reduced.addEventListener('change', syncMotion);
-const editions = [
-  ['Rumi · 创作工作室','剪辑台','#bb5547'], ['获客松','增长实验室','#4e7189'],
-  ['XV 塔罗 · 3D 牌桌','翻牌室','#78569a'], ['尼兹瓦 · 黄金时刻','日落漫游','#a16c35'],
-  ['回向','静心室','#687b60'], ['Racso','素材档案','#515993']
-];
 const dialog = document.querySelector('#preview');
 window.showProject = p => {
   dialog.querySelector('img').src = p.shot;
@@ -26,6 +8,7 @@ window.showProject = p => {
   const link = dialog.querySelector('a');
   link.hidden = !p.url;
   if (p.url) link.href = p.url;
+  dialog.querySelector('a').textContent = '打开项目 ↗';
   dialog.showModal();
 };
 function closePreview() {
@@ -40,40 +23,6 @@ dialog.onclick = e => {
     if(e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closePreview();
   }
 };
-document.querySelector('.btn-wrapper').addEventListener('click', e => {
-  e.preventDefault();
-  document.querySelector('#chips button').click();
-  document.querySelector('#filters').scrollIntoView();
-});
-const shelf = document.querySelector('#shelf');
-for (const [i,[name,label,color]] of editions.entries()) {
-  const p = window.PROJECTS.find(item => item.title === name);
-  if (!p) continue;
-  const number = String(i+1).padStart(2,'0');
-  const book = document.createElement('a');
-  book.className = 'book-card';
-  book.href = '#work-'+number;
-  book.setAttribute('aria-label','查看精选作品 '+name);
-  book.style.setProperty('--cover-color',color);
-  book.style.setProperty('--cover','url("'+p.shot+'")');
-  book.innerHTML = '<span class="book"><span class="book-shadow"></span><span class="book-back"></span><span class="page-block"></span><span class="front-cover"><b></b></span></span><small></small>';
-  book.querySelector('b').textContent = number;
-  book.querySelector('small').textContent = label;
-  shelf.append(book);
-  const scene = document.createElement('article');
-  scene.className = 'scene';
-  scene.id = 'work-'+number;
-  scene.style.setProperty('--tone',color);
-  scene.innerHTML = '<div><small></small><h3></h3><p></p><a target="_blank" rel="noopener">进入作品 ↗</a></div><button type="button"><img loading="lazy" alt=""></button>';
-  scene.querySelector('small').textContent = 'PLATE '+number+' / 06　 ·　'+label;
-  scene.querySelector('h3').textContent = name;
-  scene.querySelector('p').textContent = [p.lock,p.desc].filter(Boolean).join(' · ');
-  scene.querySelector('a').href = p.url;
-  scene.querySelector('img').src = p.shot;
-  scene.querySelector('button').setAttribute('aria-label','放大 '+name);
-  scene.querySelector('button').onclick = () => window.showProject(p);
-  document.querySelector('#scenes').append(scene);
-}
 for(const frame of document.querySelectorAll('.card-frame')) {
   frame.onpointermove = e => {
     if(e.pointerType !== 'mouse' || reduced.matches) return;
@@ -82,10 +31,6 @@ for(const frame of document.querySelectorAll('.card-frame')) {
   };
   frame.onpointerleave = () => frame.style.removeProperty('--tilt');
 }
-const mark = document.querySelector('.endmark');
-mark.style.backgroundImage = editions.map(([name])=>window.PROJECTS.find(p=>p.title===name)?.shot).filter(Boolean).map(s=>'url("'+s+'")').join(',');
-if(location.hash === '#recent' || location.hash === '#all') document.querySelector('#filters').scrollIntoView();
-
 import { constellation } from './racso/constellation.js';
 
 const signal = document.querySelector('.archive-signal');
@@ -117,3 +62,37 @@ const reveal = new IntersectionObserver(entries => {
   }
 }, {threshold:.09});
 document.querySelectorAll('.section-head,.card-frame,.scene,.endmark,.book-card').forEach(node => reveal.observe(node));
+
+const archive = document.querySelector('#archive');
+const room = document.querySelector('#studio');
+const rail = document.querySelector('.room-scroll');
+const objects = [...room.querySelectorAll('.object')];
+const products = ['Rumi · 创作工作室','尼兹瓦 · 黄金时刻','XV 塔罗 · 3D 牌桌'];
+objects.forEach((object, i) => {
+  const project = PROJECTS.find(p => p.title === products[i]);
+  object.setAttribute('aria-label', object.textContent.trim() + '，打开' + project.title);
+  object.onclick = () => {
+    window.showProject(project);
+    dialog.dataset.object = ['film','city','tarot'][i];
+    dialog.querySelector('a').textContent = ['进入 Rumi 工作室 ↗','进入黄金时刻 ↗','进入 XV 牌桌 ↗'][i];
+  };
+});
+dialog.addEventListener('close', () => delete dialog.dataset.object);
+room.querySelectorAll('.total').forEach(n => n.textContent = PROJECTS.length);
+function openRoomOrArchive() {
+  const key = location.hash.slice(1);
+  const opened = ['all','recent','filters',...Object.keys(CATEGORIES)].includes(key);
+  room.hidden = opened;
+  archive.hidden = !opened;
+  if (opened) {
+    if (key === 'filters') chips.querySelector('button').click();
+    archive.scrollIntoView();
+    archive.querySelector('a').focus({preventScroll:true});
+  } else {
+    rail.scrollLeft = (rail.scrollWidth - rail.clientWidth) / 2;
+    if (key === 'studio') rail.focus({preventScroll:true});
+    window.scrollTo(0, 0);
+  }
+}
+openRoomOrArchive();
+window.addEventListener('hashchange', openRoomOrArchive);

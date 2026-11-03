@@ -228,42 +228,24 @@
     *, *::before, *::after { transition: none !important; }
   }
 </style>
-<link rel="stylesheet" href="racso/books.css"><link rel="stylesheet" href="racso/button.css"><link rel="stylesheet" href="gallery.css?v=2"></head>
+<link rel="stylesheet" href="gallery.css?v=studio1"><link rel="stylesheet" href="studio.css"></head>
 <body>
-  <div class="wrap topbar">
-    <a class="brand" href="./"><span class="seal" aria-hidden="true">灰</span>灰叔SI</a>
-    <a class="gh" href="https://github.com/paraldaMeta" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+<header id="studio">
+  <div class="room-scroll" tabindex="0" aria-label="夜间造物室全景，可左右浏览">
+    <div class="room-art">
+      <img class="room-paint" src="studio.webp" width="1672" height="941" fetchpriority="high" alt="夜间工坊，左边的看片灯箱、中央的古城沙盘和右侧的黄铜星仪摆在工作台上。">
+      <div class="lamp-light" aria-hidden="true"></div>
+      <button class="object lightbox"><span>01　看片灯箱</span></button>
+      <button class="object model"><span>02　古城沙盘</span></button>
+      <button class="object sphere"><span>03　黄铜星仪</span></button>
+      <a class="drawers" href="#all">拉开抽屉　·　全部作品 <b class="total"></b>　↑</a>
+    </div>
   </div>
-
-  <header class="wrap masthead">
-    <div id="orbit" aria-hidden="true"><canvas></canvas></div><small class="edition">HUISHU SI　 /　 DIGITAL COLLECTION</small><h1 class="wordmark">灰叔<span class="si">SI</span></h1>
-    <h2 class="gallery-title">交互作品馆</h2><p class="lede">灰叔的产品与项目库。AI 工作助手、纯代码 3D 世界、美业作图，还有转经筒与会回答的书。点开卡片访问网站或开源仓库，本地工具另有标注。</p>
-    <dl class="stats" id="stats"></dl>
-  </header>
-
-  <section class="exhibit"><div class="wrap"><div class="exhibit-head"><div><small>SELECTED WORKS　 /　 VOL. 01</small><h2>精选上架</h2></div><a href="#filters" class="btn-wrapper" style="--dot-size: 8px; --line-weight: 1px; --line-distance: 0.8rem 1rem; --animation-speed: 0.35s; --dot-color: #fffa; --line-color: #fffa; --grid-color: #fff3; position: relative; display: inline-flex; justify-content: center; align-items: center; width: auto; height: auto; padding: var(--line-distance); background-color: rgba(0, 0, 0, 0); user-select: none">
-
-
-  <div class="line horizontal top"></div>
-  <div class="line vertical right"></div>
-  <div class="line horizontal bottom"></div>
-  <div class="line vertical left"></div>
-
-  <div class="dot top left"></div>
-  <div class="dot top right"></div>
-  <div class="dot bottom right"></div>
-  <div class="dot bottom left"></div>
-
-  <span class="btn">
-            <span class="btn-text">浏览全部作品</span>
-            <svg class="btn-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.6744 11.4075L15.7691 17.1233C15.7072 17.309 15.5586 17.4529 15.3709 17.5087L3.69348 20.9803C3.22819 21.1186 2.79978 20.676 2.95328 20.2155L6.74467 8.84131C6.79981 8.67588 6.92419 8.54263 7.08543 8.47624L12.472 6.25822C12.696 6.166 12.9535 6.21749 13.1248 6.38876L17.5294 10.7935C17.6901 10.9542 17.7463 11.1919 17.6744 11.4075Z" class=""></path>
-              <path d="M3.2959 20.6016L9.65986 14.2376" class=""></path>
-              <path d="M17.7917 11.0557L20.6202 8.22724C21.4012 7.44619 21.4012 6.17986 20.6202 5.39881L18.4989 3.27749C17.7178 2.49645 16.4515 2.49645 15.6704 3.27749L12.842 6.10592" class=""></path>
-              <path d="M11.7814 12.1163C11.1956 11.5305 10.2458 11.5305 9.66004 12.1163C9.07426 12.7021 9.07426 13.6519 9.66004 14.2376C10.2458 14.8234 11.1956 14.8234 11.7814 14.2376C12.3671 13.6519 12.3671 12.7021 11.7814 12.1163Z" class=""></path>
-            </svg>
-          </span>
-</a></div><div id="shelf"></div><div id="scenes"></div></div></section><nav class="filters" id="filters" aria-label="按分类筛选">
+  <div class="room-title"><small>HUISHU SI　 /　 AFTER HOURS</small><h1>夜间造物室</h1><p>灰叔 SI　·　点一件物品，打开一件作品。</p></div>
+  <div class="room-bar"><span>← 左右滑动探索 →</span><a href="#all">全部作品 <b class="total"></b>　↑</a></div>
+</header>
+<div id="archive" hidden><div class="archive-door wrap"><a href="#studio">← 回到造物室</a><span>作品抽屉　/　ARCHIVE</span></div>
+<nav class="filters" id="filters" aria-label="按分类筛选">
     <div class="wrap" id="chips"></div>
   </nav>
 
@@ -272,7 +254,7 @@
     <noscript><p>这个页面需要开启 JavaScript 才能显示项目卡片。</p></noscript>
   </main>
 
-  <dialog id="preview" aria-labelledby="preview-title"><button type="button" aria-label="关闭预览">×</button><img alt=""><h2 id="preview-title"></h2><p></p><a target="_blank" rel="noopener">打开项目 ↗</a></dialog><div class="endmark" aria-hidden="true">灰叔SI</div><footer>
+  </div><dialog id="preview" aria-labelledby="preview-title"><button type="button" aria-label="关闭预览">×</button><img alt=""><h2 id="preview-title"></h2><p></p><a target="_blank" rel="noopener">打开项目 ↗</a></dialog><footer>
     <div class="wrap">
       <span>© <span id="year">2026</span> 灰叔SI</span>
       <span>更新于 <time datetime="2026-11-03">2026 年 11 月 3 日</time> · <a href="https://github.com/paraldaMeta" target="_blank" rel="noopener">github.com/paraldaMeta</a></span>
@@ -296,16 +278,6 @@
     try { var u = new URL(url); return (u.host + u.pathname).replace(/\/$/, ""); }
     catch (e) { return url; }
   }
-
-  // 数字
-  var stats = document.getElementById("stats");
-  [[projects.length, "个产品与项目"], [catKeys.length, "个方向"]]
-    .forEach(function (s) {
-      var d = el("div");
-      d.appendChild(el("dt", null, s[1]));
-      d.appendChild(el("dd", null, String(s[0])));
-      stats.appendChild(d);
-    });
 
   // 卡片
   function card(p) {
@@ -430,7 +402,7 @@
       n.animate([{opacity:old?1:0,transform:"translate("+(old?old.left-rect.left:0)+"px,"+(old?old.top-rect.top:12)+"px)"},{opacity:1,transform:"none"}],{duration:320,easing:"ease-out"});
     });
     if (fromClick) {
-      history.replaceState(null, "", key === "all" ? location.pathname : "#" + key);
+      history.replaceState(null, "", "#" + key);
       var bar = document.getElementById("filters");
       if (bar.getBoundingClientRect().top <= 0) bar.scrollIntoView();
     }
@@ -441,7 +413,7 @@
     if (buttons[key] || !key) {
       select(key || "all");
       document.dispatchEvent(new Event("gallery-filter"));
-      if (key) document.getElementById("filters").scrollIntoView();
+
     }
   });
 
@@ -456,5 +428,5 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
 </script>
-<script type="module" src="gallery.js?v=2"></script></body>
+<script type="module" src="gallery.js?v=studio1"></script></body>
 </html>
