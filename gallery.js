@@ -124,6 +124,39 @@ objects.forEach((object, i) => {
     dialog.querySelector('a').textContent = ['进入 OscarFlix · 需登录 ↗','进入黄金时刻 ↗','进入 XV 牌桌 ↗'][i];
   });
 });
+// Coordinates anchor each prop to its own resting place in the panorama.
+const tabletop = [
+  ['沙之书', '沙之书', 40, 82, 12],
+  ['回向', '回向', 51, 67, 9],
+  ['长念 · 墓园', '长念 · 墓园', 63, 77, 12],
+  ['Rumi · 创作工作室', 'Rumi 创作室', 26, 48, 10],
+  ['Racso', 'Racso 工具箱', 8, 85, 11],
+  ['Cloud Duet', 'Cloud Duet', 70, 54, 10],
+  ['宝可梦汉字学堂', '宝可梦汉字学堂', 89, 82, 13]
+];
+tabletop.forEach(([title, label, x, bottom, width], index) => {
+  const project = PROJECTS.find(item => item.title === title);
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'table-prop';
+  button.setAttribute('aria-label', '查看' + title);
+  button.style.left = x + '%';
+  button.style.bottom = (100 - bottom) + '%';
+  button.style.width = width + '%';
+  const sprite = document.createElement('i');
+  sprite.setAttribute('aria-hidden', 'true');
+  sprite.style.backgroundPosition = (index % 4 * 100 / 3) + '% ' + Math.floor(index / 4) * 100 + '%';
+  const plate = document.createElement('span');
+  plate.textContent = label;
+  button.append(sprite, plate);
+  button.onclick = () => {
+    if (sequence) return;
+    window.showProject(project);
+    dialog.dataset.object = 'artifact';
+    dialog.querySelector('a').textContent = [project.url.includes('github.com/') ? '查看开源仓库' : '进入作品', project.lock].filter(Boolean).join(' · ') + ' ↗';
+  };
+  art.append(button);
+});
 dialog.addEventListener('close', () => delete dialog.dataset.object);
 room.querySelectorAll('.total').forEach(n => n.textContent = PROJECTS.length);
 function openRoomOrArchive() {

@@ -61,3 +61,23 @@
 .drawer-well i {display:block;margin:2% 6%;padding:1% 5%;background:repeating-linear-gradient(#d3b58a 0 4px,#b09572 5px);font:10px/1.6 monospace;color:#3c3024}
 #studio.in-action .object span,#studio.in-action .drawers,#studio.in-action .room-title,#studio.in-action .room-bar {opacity:0;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.orbit-wheel{animation:none;transform:rotateY(60deg)}}
+.table-prop {
+  position:absolute;transform:translateX(-50%);border:0;padding:0;
+  background:transparent;color:#fff1d3;cursor:pointer;text-align:center;
+}
+.table-prop i {
+  display:block;width:100%;aspect-ratio:1;
+  background-image:url(studio-objects.webp);background-size:400% 200%;background-repeat:no-repeat;
+  filter:brightness(.85) saturate(.9) drop-shadow(3px 5px 3px #26170ba6);
+  transform-origin:center bottom;transition:transform .24s,filter .24s;
+}
+.table-prop span {
+  display:inline-block;position:relative;margin-top:-3px;vertical-align:top;
+  padding:3px 8px;background:#282016f2;border:1px solid #c79f66;
+  color:#ffe9bd;font:600 clamp(10px,1vw,14px)/1.4 var(--sans);white-space:nowrap;
+  box-shadow:0 2px 5px #160e0a88;border-radius:2px;
+}
+.table-prop:is(:hover,:focus-visible) i {transform:translateY(-3px) rotate(-2deg);filter:brightness(1.06) drop-shadow(4px 7px 4px #24180caa)}
+#studio.in-action .table-prop {pointer-events:none}
+#studio.in-action .table-prop span {opacity:0}
+@media(prefers-reduced-motion:reduce){.table-prop i{transition:none}.table-prop:is(:hover,:focus-visible) i{transform:none}}
