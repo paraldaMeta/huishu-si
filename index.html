@@ -228,14 +228,17 @@
     *, *::before, *::after { transition: none !important; }
   }
 </style>
-<link rel="stylesheet" href="gallery.css?v=studio1"><link rel="stylesheet" href="studio.css"></head>
+<link rel="stylesheet" href="gallery.css?v=studio1"><link rel="stylesheet" href="studio.css?v=mechanics1"></head>
 <body>
 <header id="studio">
   <div class="room-scroll" tabindex="0" aria-label="夜间造物室全景，可左右浏览">
     <div class="room-art">
       <img class="room-paint" src="studio.webp" width="1672" height="941" fetchpriority="high" alt="夜间工坊，左边的看片灯箱、中央的古城沙盘和右侧的黄铜星仪摆在工作台上。">
       <div class="lamp-light" aria-hidden="true"></div>
-      <button class="object lightbox"><span>01　看片灯箱</span></button>
+      <div class="film-prop" aria-hidden="true"><div class="film-strip"><img src="shots/oscarflix.webp" alt=""><b>01　 OSCARFLIX　 /　 PRIVATE CINEMA</b></div></div>
+      <svg class="armillary" viewBox="-150 -150 300 300" aria-hidden="true"><defs><linearGradient id="brass"><stop stop-color="#62401b"/><stop offset=".34" stop-color="#e1aa54"/><stop offset=".5" stop-color="#fff0ab"/><stop offset=".68" stop-color="#a16b29"/><stop offset="1" stop-color="#523910"/></linearGradient></defs><g transform="rotate(-19)"><g class="orbit-wheel"><circle r="116"/><circle r="110" stroke-width="1"/><circle r="113" stroke-dasharray="1 9" stroke-width="5"/></g></g><g transform="rotate(52)"><g class="orbit-wheel second"><circle r="104"/></g></g></svg>
+      <div class="drawer-prop" aria-hidden="true"><div class="drawer-well"><i>作品档案　 /　 INDEX</i></div><svg viewBox="501 811 516 54" preserveAspectRatio="none"><image href="studio.webp" width="1672" height="941"/></svg></div>
+      <button class="object lightbox"><span>01　OscarFlix</span></button>
       <button class="object model"><span>02　古城沙盘</span></button>
       <button class="object sphere"><span>03　黄铜星仪</span></button>
       <a class="drawers" href="#all">拉开抽屉　·　全部作品 <b class="total"></b>　↑</a>
@@ -428,5 +431,5 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
 </script>
-<script type="module" src="gallery.js?v=studio1"></script></body>
+<script type="module" src="gallery.js?v=mechanics1"></script></body>
 </html>

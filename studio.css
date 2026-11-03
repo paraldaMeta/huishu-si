@@ -40,3 +40,24 @@
 }
 @media(prefers-reduced-motion:reduce){.lamp-light{animation:none}.object span,.drawers{transition:none}}
 @media(min-aspect-ratio:1/1){.room-art{width:min(100%,177.68svh);margin:auto}.room-title{left:max(4%,calc((100vw - 177.68svh)/2 + 3vw))}}
+
+/* Props share the illustration's coordinate system, including in the mobile panorama. */
+.room-scroll {overflow-y:clip}
+.room-art {isolation:isolate}
+.film-prop,.armillary,.drawer-prop {position:absolute;pointer-events:none}
+.film-prop {left:5%;top:38%;width:32%;height:32%;clip-path:polygon(0 0,100% 0,100% 92%,0 100%)}
+.film-strip {position:absolute;left:8%;top:29%;width:75%;opacity:0;background:#211a15;padding:3% 3% 2%;box-shadow:0 8px 13px #120d09b3;color:#f7d6a0}
+.film-strip::before,.film-strip::after {content:"";display:block;height:4px;background:repeating-linear-gradient(90deg,#d6b88e 0 6px,transparent 6px 13px)}
+.film-strip img {display:block;width:100%;aspect-ratio:2.2;object-fit:cover;border:2px solid #100e0d}
+.film-strip b {display:block;font:8px/1.6 monospace;letter-spacing:.12em}
+.armillary {left:75.7%;top:24.4%;width:17.5%;height:28.3%;overflow:visible;fill:none;stroke:url(#brass);stroke-width:3.8}
+.orbit-wheel {transform-box:view-box;transform-origin:center;animation:brass-turn 17s linear infinite}
+.orbit-wheel.second {animation-duration:24s;animation-delay:-7s;stroke-width:2.8}
+@keyframes brass-turn {from{transform:rotateY(20deg)}to{transform:rotateY(380deg)}}
+@property --pull {syntax:'<percentage>';inherits:true;initial-value:0%}
+.drawer-prop {left:29.96%;top:86.18%;width:30.86%;height:5.74%;--pull:0%}
+.drawer-prop svg {display:block;width:100%;height:100%;transform:translateY(var(--pull));position:relative}
+.drawer-well {position:absolute;inset:0;background:linear-gradient(#100e09,#382819);border:2px solid #453725;overflow:hidden}
+.drawer-well i {display:block;margin:2% 6%;padding:1% 5%;background:repeating-linear-gradient(#d3b58a 0 4px,#b09572 5px);font:10px/1.6 monospace;color:#3c3024}
+#studio.in-action .object span,#studio.in-action .drawers,#studio.in-action .room-title,#studio.in-action .room-bar {opacity:0;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.orbit-wheel{animation:none;transform:rotateY(60deg)}}

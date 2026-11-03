@@ -67,21 +67,69 @@ const archive = document.querySelector('#archive');
 const room = document.querySelector('#studio');
 const rail = document.querySelector('.room-scroll');
 const objects = [...room.querySelectorAll('.object')];
-const products = ['Rumi · 创作工作室','尼兹瓦 · 黄金时刻','XV 塔罗 · 3D 牌桌'];
+const products = ['OscarFlix','尼兹瓦 · 黄金时刻','XV 塔罗 · 3D 牌桌'];
+const art = room.querySelector('.room-art');
+let sequence;
+async function perform(target, frames, duration, complete) {
+  if (sequence) return;
+  if (reduced.matches) return complete();
+  const animation = target.animate(frames, {duration, easing:'cubic-bezier(.33,.05,.19,1)', fill:'both'});
+  sequence = animation;
+  room.classList.add('in-action');
+  try {
+    await animation.finished;
+    if (!room.hidden) complete();
+  } catch (error) {
+    if (error.name !== 'AbortError') throw error;
+  } finally {
+    animation.cancel();
+    sequence = null;
+    room.classList.remove('in-action');
+  }
+}
+function visitObject(i, open) {
+  if (i === 0) return perform(room.querySelector('.film-strip'), [
+    {transform:'translate(-55%,72%) rotate(-13deg) scale(.65)',opacity:0},
+    {opacity:1,offset:.22},
+    {transform:'translate(8%,-20%) rotate(-5deg) scale(1.08)',opacity:1,offset:.85},
+    {transform:'translate(8%,-20%) rotate(-5deg) scale(1.08)',opacity:1}
+  ],1050,open);
+  if (i === 1) {
+    const rect = art.getBoundingClientRect();
+    const x = rect.left + rect.width * .57;
+    const y = rect.top + rect.height * .449;
+    art.style.transformOrigin = '57% 44.9%';
+    const travel = 'translate('+(innerWidth/2-x)+'px,'+(innerHeight/2-y)+'px) scale(3.3)';
+    return perform(art, [{transform:'none'},{transform:travel}],1250,open);
+  }
+  open();
+}
+room.querySelectorAll('a[href="#all"]').forEach(link => {
+  link.addEventListener('click', e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    if (sequence) return;
+    const drawer = room.querySelector('.drawer-prop');
+    if (rail.scrollWidth > rail.clientWidth) rail.scrollLeft = drawer.offsetLeft + drawer.offsetWidth/2 - rail.clientWidth/2;
+    perform(drawer, [{ '--pull':'0%' },{ '--pull':'95%',offset:.78 },{ '--pull':'95%' }],950,() => { location.hash = 'all'; });
+  });
+});
+reduced.addEventListener('change', () => { if (reduced.matches) sequence?.finish(); });
 objects.forEach((object, i) => {
   const project = PROJECTS.find(p => p.title === products[i]);
   object.setAttribute('aria-label', object.textContent.trim() + '，打开' + project.title);
-  object.onclick = () => {
+  object.onclick = () => visitObject(i, () => {
     window.showProject(project);
     dialog.dataset.object = ['film','city','tarot'][i];
-    dialog.querySelector('a').textContent = ['进入 Rumi 工作室 ↗','进入黄金时刻 ↗','进入 XV 牌桌 ↗'][i];
-  };
+    dialog.querySelector('a').textContent = ['进入 OscarFlix · 需登录 ↗','进入黄金时刻 ↗','进入 XV 牌桌 ↗'][i];
+  });
 });
 dialog.addEventListener('close', () => delete dialog.dataset.object);
 room.querySelectorAll('.total').forEach(n => n.textContent = PROJECTS.length);
 function openRoomOrArchive() {
   const key = location.hash.slice(1);
   const opened = ['all','recent','filters',...Object.keys(CATEGORIES)].includes(key);
+  if (opened) sequence?.cancel();
   room.hidden = opened;
   archive.hidden = !opened;
   if (opened) {
