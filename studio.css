@@ -13,9 +13,9 @@
 .object span::before {content:"";display:inline-block;margin-right:8px;width:6px;height:6px;background:#ffda8c;border-radius:50%;box-shadow:0 0 8px #ffc264}
 .object:is(:hover,:focus-visible) span {translate:0 -5px;background:#4d3422}
 .object:focus-visible,.drawers:focus-visible {outline:3px solid white;outline-offset:3px}
-.lightbox {left:4%;top:46%;width:32%;height:31%}.model {left:36%;top:32%;width:33%;height:20%}.sphere {left:74%;top:24%;width:21%;height:41%}
+.lightbox {left:1.5%;top:54%;width:22%;height:30%}.model {left:39%;top:24%;width:22%;height:28%}.sphere {left:79%;top:21%;width:14%;height:31%}
 .drawers {position:absolute;left:50%;bottom:5%;transform:translateX(-50%);background:#332b1b;color:#ffdda1;transition:bottom .25s}.drawers:hover{bottom:6%}
-.lamp-light {position:absolute;pointer-events:none;left:34%;top:16%;width:36%;height:37%;background:radial-gradient(ellipse at 50% 30%,#ffd08233,transparent 66%);mix-blend-mode:screen;animation:lamplight 5s ease-in-out infinite alternate}
+.lamp-light {position:absolute;pointer-events:none;left:64%;top:10%;width:32%;height:38%;background:radial-gradient(ellipse at 50% 30%,#ffd08233,transparent 66%);mix-blend-mode:screen;animation:lamplight 5s ease-in-out infinite alternate}
 @keyframes lamplight {to{opacity:.25}}
 .room-bar {display:none}.archive-door {display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px}.archive-door a{color:var(--accent);text-underline-offset:4px}
 #preview[data-object] {background:#222322;color:#f6e9ce;border-color:#9b8056}
@@ -36,7 +36,7 @@
 .room-title {top:0;left:0;width:100%;padding:24px 20px 35px;background:linear-gradient(#0f1117dc,transparent)}
 .room-bar {position:absolute;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:22px 16px max(16px,env(safe-area-inset-bottom));background:linear-gradient(transparent,#121211ea);pointer-events:none}
 .room-bar span{font-size:12px;text-shadow:0 1px 4px black}.room-bar a{pointer-events:auto}
-.drawers{bottom:13%}
+.drawers{bottom:8%}
 }
 @media(prefers-reduced-motion:reduce){.lamp-light{animation:none}.object span,.drawers{transition:none}}
 @media(min-aspect-ratio:1/1){.room-art{width:min(100%,177.68svh);margin:auto}.room-title{left:max(4%,calc((100vw - 177.68svh)/2 + 3vw))}}
@@ -45,39 +45,33 @@
 .room-scroll {overflow-y:clip}
 .room-art {isolation:isolate}
 .film-prop,.armillary,.drawer-prop {position:absolute;pointer-events:none}
-.film-prop {left:5%;top:38%;width:32%;height:32%;clip-path:polygon(0 0,100% 0,100% 92%,0 100%)}
+.film-prop {left:2%;top:49%;width:24%;height:32%;clip-path:polygon(0 0,100% 0,100% 92%,0 100%)}
 .film-strip {position:absolute;left:8%;top:29%;width:75%;opacity:0;background:#211a15;padding:3% 3% 2%;box-shadow:0 8px 13px #120d09b3;color:#f7d6a0}
 .film-strip::before,.film-strip::after {content:"";display:block;height:4px;background:repeating-linear-gradient(90deg,#d6b88e 0 6px,transparent 6px 13px)}
 .film-strip img {display:block;width:100%;aspect-ratio:2.2;object-fit:cover;border:2px solid #100e0d}
 .film-strip b {display:block;font:8px/1.6 monospace;letter-spacing:.12em}
-.armillary {left:75.7%;top:24.4%;width:17.5%;height:28.3%;overflow:visible;fill:none;stroke:url(#brass);stroke-width:3.8}
+.armillary {left:79.7%;top:20.9%;width:12%;height:20.5%;overflow:visible;fill:none;stroke:url(#brass);stroke-width:3.8}
 .orbit-wheel {transform-box:view-box;transform-origin:center;animation:brass-turn 17s linear infinite}
 .orbit-wheel.second {animation-duration:24s;animation-delay:-7s;stroke-width:2.8}
 @keyframes brass-turn {from{transform:rotateY(20deg)}to{transform:rotateY(380deg)}}
 @property --pull {syntax:'<percentage>';inherits:true;initial-value:0%}
-.drawer-prop {left:29.96%;top:86.18%;width:30.86%;height:5.74%;--pull:0%}
+.drawer-prop {left:31.4%;top:87.46%;width:36.78%;height:8.29%;--pull:0%}
 .drawer-prop svg {display:block;width:100%;height:100%;transform:translateY(var(--pull));position:relative}
 .drawer-well {position:absolute;inset:0;background:linear-gradient(#100e09,#382819);border:2px solid #453725;overflow:hidden}
 .drawer-well i {display:block;margin:2% 6%;padding:1% 5%;background:repeating-linear-gradient(#d3b58a 0 4px,#b09572 5px);font:10px/1.6 monospace;color:#3c3024}
 #studio.in-action .object span,#studio.in-action .drawers,#studio.in-action .room-title,#studio.in-action .room-bar {opacity:0;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.orbit-wheel{animation:none;transform:rotateY(60deg)}}
+
+/* Hit regions sit above the painted objects; their labels rest on the shelf edges. */
 .table-prop {
-  position:absolute;transform:translateX(-50%);border:0;padding:0;
-  background:transparent;color:#fff1d3;cursor:pointer;text-align:center;
+  position:absolute;transform:translateX(-50%);height:27%;border:0;padding:0;
+  display:grid;align-items:end;justify-items:center;background:transparent;cursor:pointer;
 }
-.table-prop i {
-  display:block;width:100%;aspect-ratio:1;
-  background-image:url(studio-objects.webp);background-size:400% 200%;background-repeat:no-repeat;
-  filter:brightness(.85) saturate(.9) drop-shadow(3px 5px 3px #26170ba6);
-  transform-origin:center bottom;transition:transform .24s,filter .24s;
+.object span,.table-prop span {
+  color:#fff1d4;background:#30241bef;border:1px solid #b59a6e;border-radius:2px;
+  padding:3px 9px;font:600 clamp(10px,1vw,14px)/1.35 var(--sans);
+  white-space:nowrap;box-shadow:0 2px 5px #160e0a55;
 }
-.table-prop span {
-  display:inline-block;position:relative;margin-top:-3px;vertical-align:top;
-  padding:3px 8px;background:#282016f2;border:1px solid #c79f66;
-  color:#ffe9bd;font:600 clamp(10px,1vw,14px)/1.4 var(--sans);white-space:nowrap;
-  box-shadow:0 2px 5px #160e0a88;border-radius:2px;
-}
-.table-prop:is(:hover,:focus-visible) i {transform:translateY(-3px) rotate(-2deg);filter:brightness(1.06) drop-shadow(4px 7px 4px #24180caa)}
+.table-prop:is(:hover,:focus-visible) span {background:#523b22}
 #studio.in-action .table-prop {pointer-events:none}
 #studio.in-action .table-prop span {opacity:0}
-@media(prefers-reduced-motion:reduce){.table-prop i{transition:none}.table-prop:is(:hover,:focus-visible) i{transform:none}}

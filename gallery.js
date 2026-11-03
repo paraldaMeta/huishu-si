@@ -96,9 +96,9 @@ function visitObject(i, open) {
   ],1050,open);
   if (i === 1) {
     const rect = art.getBoundingClientRect();
-    const x = rect.left + rect.width * .57;
-    const y = rect.top + rect.height * .449;
-    art.style.transformOrigin = '57% 44.9%';
+    const x = rect.left + rect.width * .51;
+    const y = rect.top + rect.height * .411;
+    art.style.transformOrigin = '51% 41.1%';
     const travel = 'translate('+(innerWidth/2-x)+'px,'+(innerHeight/2-y)+'px) scale(3.3)';
     return perform(art, [{transform:'none'},{transform:travel}],1250,open);
   }
@@ -126,15 +126,15 @@ objects.forEach((object, i) => {
 });
 // Coordinates anchor each prop to its own resting place in the panorama.
 const tabletop = [
-  ['沙之书', '沙之书', 40, 82, 12],
-  ['回向', '回向', 51, 67, 9],
-  ['长念 · 墓园', '长念 · 墓园', 63, 77, 12],
-  ['Rumi · 创作工作室', 'Rumi 创作室', 26, 48, 10],
-  ['Racso', 'Racso 工具箱', 8, 85, 11],
-  ['Cloud Duet', 'Cloud Duet', 70, 54, 10],
-  ['宝可梦汉字学堂', '宝可梦汉字学堂', 89, 82, 13]
+  ['沙之书', '沙之书', 52, 84, 16],
+  ['回向', '回向', 69, 84, 11],
+  ['长念 · 墓园', '长念 · 墓园', 69, 52, 14],
+  ['Rumi · 创作工作室', 'Rumi 创作室', 15, 52, 18],
+  ['Racso', 'Racso 工具箱', 33, 84, 17],
+  ['Cloud Duet', 'Cloud Duet', 31.8, 52, 13],
+  ['宝可梦汉字学堂', '宝可梦汉字学堂', 87, 84, 19]
 ];
-tabletop.forEach(([title, label, x, bottom, width], index) => {
+tabletop.forEach(([title, label, x, bottom, width]) => {
   const project = PROJECTS.find(item => item.title === title);
   const button = document.createElement('button');
   button.type = 'button';
@@ -143,12 +143,9 @@ tabletop.forEach(([title, label, x, bottom, width], index) => {
   button.style.left = x + '%';
   button.style.bottom = (100 - bottom) + '%';
   button.style.width = width + '%';
-  const sprite = document.createElement('i');
-  sprite.setAttribute('aria-hidden', 'true');
-  sprite.style.backgroundPosition = (index % 4 * 100 / 3) + '% ' + Math.floor(index / 4) * 100 + '%';
   const plate = document.createElement('span');
   plate.textContent = label;
-  button.append(sprite, plate);
+  button.append(plate);
   button.onclick = () => {
     if (sequence) return;
     window.showProject(project);
