@@ -131,7 +131,7 @@ const tabletop = [
   ['长念 · 墓园', '长念 · 墓园', 69, 52, 14],
   ['XV 塔罗 · 3D 牌桌', 'XV 塔罗 · 3D 牌桌', 15, 52, 18],
   ['Racso', 'Racso 工具箱', 33, 84, 17],
-  ['Cloud Duet', 'Cloud Duet', 31.8, 52, 13],
+  ['妙妙工具箱', '妙妙工具箱', 31.8, 52, 13],
   ['宝可梦汉字学堂', '宝可梦汉字学堂', 87, 84, 19]
 ];
 tabletop.forEach(([title, label, x, bottom, width]) => {

@@ -14,6 +14,16 @@ window.CATEGORIES = {
 
 window.PROJECTS = [
   {
+    title: "妙妙工具箱",
+    en: "AstroMagia",
+    desc: "探索地占术等占测体系，按问题查找工具、进入对应工作台。",
+    url: "https://astromagia.pages.dev/",
+    shot: "shots/astromagia.webp",
+    cat: "mystic",
+    lock: "需密码",
+    recent: true,
+  },
+  {
     title: "尼兹瓦 · 黄金时刻",
     en: "Nizwa Golden Hour",
     desc: "在浏览器里漫游阿曼尼兹瓦古城，走进黄金时刻的城墙、街巷与棕榈园。首次打开会由代码现场生成三维场景。",
