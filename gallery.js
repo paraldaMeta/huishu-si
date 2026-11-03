@@ -67,7 +67,7 @@ const archive = document.querySelector('#archive');
 const room = document.querySelector('#studio');
 const rail = document.querySelector('.room-scroll');
 const objects = [...room.querySelectorAll('.object')];
-const products = ['OscarFlix','尼兹瓦 · 黄金时刻','XV 塔罗 · 3D 牌桌'];
+const products = ['OscarFlix','尼兹瓦 · 黄金时刻',"Grey's Archive"];
 const art = room.querySelector('.room-art');
 let sequence;
 async function perform(target, frames, duration, complete) {
@@ -121,7 +121,7 @@ objects.forEach((object, i) => {
   object.onclick = () => visitObject(i, () => {
     window.showProject(project);
     dialog.dataset.object = ['film','city','tarot'][i];
-    dialog.querySelector('a').textContent = ['进入 OscarFlix · 需登录 ↗','进入黄金时刻 ↗','进入 XV 牌桌 ↗'][i];
+    dialog.querySelector('a').textContent = ['进入 OscarFlix · 需登录 ↗','进入黄金时刻 ↗','进入 Grey’s Archive ↗'][i];
   });
 });
 // Coordinates anchor each prop to its own resting place in the panorama.

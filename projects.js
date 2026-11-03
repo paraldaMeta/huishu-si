@@ -14,6 +14,16 @@ window.CATEGORIES = {
 
 window.PROJECTS = [
   {
+    title: "Grey's Archive",
+    en: "Occult Library",
+    desc: "Grey 的私人神秘学藏书馆。",
+    url: "https://greys-archive.pages.dev/",
+    shot: "shots/greys-archive.webp",
+    cat: "mystic",
+    lock: "私人馆藏",
+    recent: true,
+  },
+  {
     title: "妙妙工具箱",
     en: "AstroMagia",
     desc: "探索地占术等占测体系，按问题查找工具、进入对应工作台。",
