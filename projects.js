@@ -14,6 +14,26 @@ window.CATEGORIES = {
 
 window.PROJECTS = [
   {
+    title: "grokbot 知识库",
+    en: "grokbot-kb",
+    desc: "grokbot 整理的知识库可视化站：检索与带出处的问答、内容审查、关系图谱、论文摘要与健康度；另有只读 MCP 供 Agent 接入。",
+    url: "https://grokbot-kb-site.cotalk.workers.dev/",
+    shot: "shots/grokbot-kb.webp",
+    cat: "tools",
+    lock: "需密码",
+    recent: true,
+  },
+  {
+    title: "Mirage Engine",
+    en: "纯代码 3D 世界引擎",
+    desc: "从古城沙盘「尼兹瓦 · 黄金时刻」的做法提炼出的开源 three.js 引擎：用代码搭建庭院、花园与雪屋，附 Agent 技能、自动试玩和单文件打包。古城本身不在仓库里。",
+    url: "https://github.com/paraldaMeta/mirage-engine",
+    shot: "shots/mirage-engine.webp",
+    cat: "tools",
+    status: "开源 · 早期版本",
+    recent: true,
+  },
+  {
     title: "Grey's Archive",
     en: "Occult Library",
     desc: "Grey 的私人神秘学藏书馆。",
@@ -21,7 +41,6 @@ window.PROJECTS = [
     shot: "shots/greys-archive.webp",
     cat: "mystic",
     lock: "私人馆藏",
-    recent: true,
   },
   {
     title: "妙妙工具箱",
@@ -31,7 +50,6 @@ window.PROJECTS = [
     shot: "shots/astromagia.webp",
     cat: "mystic",
     lock: "需密码",
-    recent: true,
   },
   {
     title: "尼兹瓦 · 黄金时刻",
@@ -41,7 +59,6 @@ window.PROJECTS = [
     shot: "shots/nizwa-golden-hour.webp",
     cat: "learn",
     status: "3D 漫游",
-    recent: true,
   },
   {
     title: "Rumi · 创作工作室",
@@ -51,7 +68,6 @@ window.PROJECTS = [
     shot: "shots/rumi-studio-20261103.webp",
     cat: "life",
     status: "PWA",
-    recent: true,
   },
   {
     title: "Cloud Duet",
@@ -61,7 +77,6 @@ window.PROJECTS = [
     shot: "shots/cloud-duet.webp",
     cat: "tools",
     status: "开源 · 自部署",
-    recent: true,
   },
   {
     title: "Racso",
@@ -71,7 +86,6 @@ window.PROJECTS = [
     shot: "shots/racso-20261103.webp",
     cat: "tools",
     lock: "需密码",
-    recent: true,
   },
   {
     title: "AI 娘开机动画",
@@ -82,17 +96,6 @@ window.PROJECTS = [
     shotFit: "contain",
     cat: "tools",
     status: "开源 · macOS",
-    recent: true,
-  },
-  {
-    title: "Mirage Engine",
-    en: "纯代码 3D 世界引擎",
-    desc: "用 three.js 代码搭建庭院、花园与雪屋，提供 Agent 技能、自动试玩和单文件打包。仍在早期开发中。",
-    url: "https://github.com/paraldaMeta/mirage-engine",
-    shot: "shots/mirage-engine.webp",
-    cat: "tools",
-    status: "开源 · 早期版本",
-    recent: true,
   },
   {
     title: "获客松",
@@ -102,7 +105,6 @@ window.PROJECTS = [
     shot: "shots/leadathon-20261103.webp",
     cat: "tools",
     lock: "需密码",
-    recent: true,
   },
   {
     title: "XV 塔罗 · 3D 牌桌",
