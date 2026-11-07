@@ -15,8 +15,8 @@ window.CATEGORIES = {
 window.PROJECTS = [
   {
     title: "SI知识库",
-    en: "grokbot-kb",
-    desc: "grokbot 整理的知识库可视化站：检索与带出处的问答、内容审查、关系图谱、论文摘要与健康度；另有只读 MCP 供 Agent 接入。",
+    en: "Knowledge Base",
+    desc: "知识库可视化站：检索与带出处的问答、内容审查、关系图谱、论文摘要与健康度；另有只读 MCP 供 Agent 接入。",
     url: "https://grokbot-kb-site.cotalk.workers.dev/",
     shot: "shots/grokbot-kb.webp",
     cat: "tools",
