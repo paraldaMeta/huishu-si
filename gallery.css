@@ -54,3 +54,5 @@
   }
 }
 @media(prefers-reduced-motion:reduce) { .archive-signal canvas { display:none; } }
+
+.zoom.dl{right:auto;left:10px;text-decoration:none;font-size:13px}#preview a.dl{margin-left:16px}

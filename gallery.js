@@ -9,6 +9,9 @@ window.showProject = p => {
   link.hidden = !p.url;
   if (p.url) link.href = p.url;
   dialog.querySelector('a').textContent = '打开项目 ↗';
+  const dl = dialog.querySelector('a.dl');
+  dl.hidden = !p.download;
+  if (p.download) dl.href = p.download;
   dialog.showModal();
 };
 function closePreview() {

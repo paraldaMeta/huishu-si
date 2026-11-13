@@ -257,14 +257,14 @@
     <noscript><p>这个页面需要开启 JavaScript 才能显示项目卡片。</p></noscript>
   </main>
 
-  </div><dialog id="preview" aria-labelledby="preview-title"><button type="button" aria-label="关闭预览">×</button><img alt=""><h2 id="preview-title"></h2><p></p><a target="_blank" rel="noopener">打开项目 ↗</a></dialog><footer>
+  </div><dialog id="preview" aria-labelledby="preview-title"><button type="button" aria-label="关闭预览">×</button><img alt=""><h2 id="preview-title"></h2><p></p><a target="_blank" rel="noopener">打开项目 ↗</a> <a class="dl" download hidden>下载 HTML ↓</a></dialog><footer>
     <div class="wrap">
       <span>© <span id="year">2026</span> 灰叔SI</span>
       <span>更新于 <time datetime="2026-11-13">2026 年 11 月 13 日</time> · <a href="https://github.com/paraldaMeta" target="_blank" rel="noopener">github.com/paraldaMeta</a></span>
     </div>
   </footer>
 
-<script src="projects.js?v=neon-district"></script>
+<script src="projects.js?v=neon-district-dl"></script>
 <script>
 (function () {
   var projects = window.PROJECTS || [];
@@ -337,6 +337,13 @@
       preview.setAttribute("aria-label", "预览 " + p.title);
       preview.onclick = function () { window.showProject(p); };
       frame.appendChild(preview);
+    }
+    if (p.download) {
+      var dl = el("a", "zoom dl", "下载 HTML ↓");
+      dl.href = p.download;
+      dl.setAttribute("download", "");
+      dl.setAttribute("aria-label", "下载 " + p.title + " 的单个 HTML 文件");
+      frame.appendChild(dl);
     }
     return frame;
   }
