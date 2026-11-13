@@ -19,6 +19,7 @@ window.PROJECTS = [
     desc: "雨夜赛博街区里的第一人称射击：浏览器里打开就能玩，约 2 MB、可安装、可离线、手机能玩。机器人会包抄、擒抱、挥刀，有拔刀术剑客 Boss 和二周目。用 Mirage 引擎做的。",
     url: "https://paraldameta.github.io/mirage-engine/",
     shot: "shots/neon-district-20261113.webp",
+    download: "https://paraldameta.github.io/mirage-engine/neon-district.html",   // 单个 HTML 文件（约 2 MB），卡片左上角和预览里都有下载入口
     cat: "learn",
     status: "可玩 · 开源引擎",
     recent: true,
