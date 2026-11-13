@@ -14,6 +14,16 @@ window.CATEGORIES = {
 
 window.PROJECTS = [
   {
+    title: "霓虹街区",
+    en: "Neon District",
+    desc: "雨夜赛博街区里的第一人称射击：浏览器里打开就能玩，约 2 MB、可安装、可离线、手机能玩。机器人会包抄、擒抱、挥刀，有拔刀术剑客 Boss 和二周目。用 Mirage 引擎做的。",
+    url: "https://paraldameta.github.io/mirage-engine/",
+    shot: "shots/neon-district-20261113.webp",
+    cat: "learn",
+    status: "可玩 · 开源引擎",
+    recent: true,
+  },
+  {
     title: "SI知识库",
     en: "Knowledge Base",
     desc: "知识库可视化站：检索与带出处的问答、内容审查、关系图谱、论文摘要与健康度；另有只读 MCP 供 Agent 接入。",
@@ -21,7 +31,6 @@ window.PROJECTS = [
     shot: "shots/grokbot-kb.webp",
     cat: "tools",
     lock: "需密码",
-    recent: true,
   },
   {
     title: "Mirage Engine",
@@ -31,7 +40,6 @@ window.PROJECTS = [
     shot: "shots/mirage-engine.webp",
     cat: "tools",
     status: "开源 · 早期版本",
-    recent: true,
   },
   {
     title: "Grey's Archive",
